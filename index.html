@@ -1,16 +1,92 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TODO: change this -->
     <title>startpage</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* load fonts */
+        @font-face {
+            font-family: "Electrolize Regular";
+            src: url("./assets/Electrolize-Regular.woff2");
+            font-display: swap;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
+            font-family: "Electrolize Regular", Courier, monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            block-size: 100vh;
+
+            background-image: url("./assets/bg.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .container {
+            border: 4px solid #2d3236;
+            padding: 10px 20px;
+            height: 60vh;
+            overflow: scroll;
+            /* background-color: #131212; */
+            scrollbar-width: none;
+
+            backdrop-filter: blur(1em);
+
+            min-width: 10vw;
+        }
+        .links > li {
+            list-style: none;
+            text-align: center;
+        }
+        .links a {
+            text-decoration: none;
+            display: block;
+            color: rgb(210, 207, 207);
+            background: #000000;
+            padding: 5px 15px;
+            margin-block: 10px;
+            
+
+        }
+    </style>
+
 </head>
 <body>
     <div class="container">
-        <div class="card-container">
+        <ul class="links">
+        </ul>
     </div>
-    
-    <script type="module" src="script.js"></script>
+    <script>
+        let links = [
+            ["youtube", "youtube.com"],
+            ["instagram", "instagram.com"],
+            ["reddit", "reddit.com"],
+            ["twitter", "twitter.com"]
+        ]
+        let links_container = document.querySelector('ul.links');
+        links.forEach(l => {
+            const li = document.createElement('li')
+            const a = document.createElement('a')
+            a.textContent = l[0]
+            a.href = "https://" + l[1]
+            a.target = "_blank"
+            li.appendChild(a)
+            links_container.appendChild(li)
+        })
+    </script>
 </body>
 </html>
